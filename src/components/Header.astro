@@ -39,17 +39,33 @@
     <span class="line"></span>
   </div>
 
-<script>
-    document.querySelector(".hamburger").addEventListener("click", () => {
-      document.querySelector(".links").classList.toggle("expanded");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const hamburger = document.querySelector(".hamburger");
+        const links = document.querySelector(".links");
+
+        // Manejar el clic en el botón hamburguesa
+        hamburger.addEventListener("click", () => {
+            if (links.classList.contains("expanded")) {
+                // Si el menú ya está expandido, ocúltalo
+                links.classList.remove("expanded");
+                links.style.display = "none";
+            } else {
+                // Si el menú no está expandido, muéstralo
+                links.classList.add("expanded");
+                links.style.display = "flex";
+            }
+        });
+
+        // Manejar el redimensionamiento de la ventana
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 560.01) {
+                links.classList.remove("expanded");
+                links.style.display = "none"; // Oculta el menú en pantallas grandes
+            }
+        });
     });
-    window.addEventListener("resize", () => {
-      const links = document.querySelector(".links");
-      if (window.innerWidth >= 560.01) {
-        links.classList.remove("expanded");
-      }
-    });
-  </script>
+</script>
 
   <style>
     body {
@@ -159,7 +175,7 @@
     }
 
     .links {
-      display: flex;
+      display: none;
       align-items: center;
     }
   </style>

@@ -1,10 +1,12 @@
 <section class="secc">
     <h1>CANAL DE YOUTUBE</h1>
     <cont class="cont">
-    <reproductor class="reproductor"></reproductor>
+    <reproductor class="reproductor">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/uqyxbHzp2fI?si=-UfuxT7fw7nSiLgs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </reproductor>
     </cont>
     <h2>FORMACION</h2>
-    <ul>
+    <ul class="list">
         <li>curso de tal</li>
         <li>curso de cual</li>
         <li>tecnicatura en esto</li>
@@ -21,28 +23,25 @@
 
     
     h1{
-        margin: 0 auto;
-        position: relative;
-        right: 16rem;
-        font-family: sans-serif;
-        padding: 3rem;
-        font-size: 2rem;
+    font-family: sans-serif;
+    padding: 3rem;
+    font-size: 2rem;
     }
  
     h2{
-        margin: 0 auto;
-        position: relative;
-        right: 20rem;
-        font-family: sans-serif;
-        padding: 3rem;
-        font-size: 2rem;
+    font-family: sans-serif;
+    padding: 3rem;
+    font-size: 2rem;
     }
+    
     .cont{
         display: flex;
         justify-content: center;
     }
     .reproductor{
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 26rem;
     width: 48rem;
     background-color: black;
@@ -51,11 +50,11 @@
     margin-bottom: 3rem;
     }
 
-    ul{
-    list-style: none;
+    .list{
     width: 50%;
+    display: flex;
     position: relative;
-    left: 5rem;
+    flex-direction: column;
     }
 
     li{

@@ -1,0 +1,188 @@
+<div class="txt">
+    <h2>MIS</h2>
+    <h2 class="h2-2">PRODUCCIONES</h2>
+</div>
+
+<div class="slider-container">
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <div class="slider">
+        <div class="slide">
+            <div class="image-container">
+                <img src="src/yisus.jpeg" alt="Image 1">
+            </div>
+            <audio controls>
+                <source src="" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        <div class="slide">
+            <div class="image-container">
+                <img src="" alt="Image 1">
+            </div>
+            <audio controls>
+                <source src="" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        <div class="slide">
+            <div class="image-container">
+                <img src="src/yisus.jpeg" alt="Image 1">
+            </div>
+            <audio controls>
+                <source src="" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        <div class="slide">
+            <div class="image-container">
+                <img src="" alt="Image 1">
+            </div>
+            <audio controls>
+                <source src="src/yisus.jpeg" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        
+        
+        <!-- Añade más elementos según sea necesario -->
+    </div>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+</div>
+
+
+<script>
+    let currentSlide = 0;
+
+function showSlide(index) {
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+const slider = document.querySelector('.slider');
+
+if (index >= totalSlides) {
+    currentSlide = 0;
+} else if (index < 0) {
+    currentSlide = totalSlides - 1;
+} else {
+    currentSlide = index;
+}
+
+const offset = -currentSlide * (100 / 3); // Mostrar 3 elementos por vez
+slider.style.transform = `translateX(${offset}%)`;
+}
+
+function nextSlide() {
+showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+showSlide(currentSlide - 1);
+}
+
+// Mostrar la primera diapositiva
+showSlide(currentSlide);
+
+</script>
+
+
+<style>
+    body{
+        font-family: sans-serif;
+    }
+.txt{
+    position: relative;
+    right: 11rem;
+}
+
+h2{
+    color: white;
+}
+.h2-2{
+    color: #CA1DA4;
+}
+
+.slider-container {
+position: relative;
+width: 80%;
+max-width: 1200px;
+overflow: hidden;
+background-color: #ffffff00;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slider {
+    margin-left: .6rem;
+    width: 60rem;
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+min-width: 33.3333%;
+box-sizing: border-box;
+padding: 20px;
+display: flex;
+/* gap: 1rem; */
+/* text-align: center; */
+background-color: rgba(0, 0, 0, 0);
+flex-direction: column;
+align-items: center;
+}
+
+.slide .image-container {
+position: relative;
+width: 100%;
+height: 20rem;
+}
+
+.slide .image-container img {
+position: relative;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+audio {
+width: 100%;
+background-color: #f1f3f4;
+outline: none;
+}
+
+
+
+
+
+.prev, .next {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background-color: rgb(0 0 0 / 0%);
+color: white;
+border: none;
+/* padding: 0px; */
+cursor: pointer;
+/* border-radius: 50%; */
+z-index: 1;
+font-size: 3rem;
+/* width: 0rem; */
+}
+
+.prev {
+    left: -8px;
+    top: 13rem;
+}
+
+.next {
+    right: -8px;
+    top: 13rem;
+}
+
+.prev:hover, .next:hover {
+background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+</style>

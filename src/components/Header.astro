@@ -40,31 +40,34 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const hamburger = document.querySelector(".hamburger");
-        const links = document.querySelector(".links");
+    // Obtén el elemento del menú
+const links = document.querySelector(".links") as HTMLElement;
+const hamburger = document.querySelector(".hamburger") as HTMLElement;
 
-        // Manejar el clic en el botón hamburguesa
-        hamburger.addEventListener("click", () => {
+// Añade el manejador de eventos solo si 'hamburger' no es null
+if (hamburger) {
+    hamburger.addEventListener("click", () => {
+        if (links) {
             if (links.classList.contains("expanded")) {
-                // Si el menú ya está expandido, ocúltalo
-                links.classList.remove("expanded");
-                links.style.display = "none";
-            } else {
-                // Si el menú no está expandido, muéstralo
-                links.classList.add("expanded");
-                links.style.display = "flex";
-            }
-        });
-
-        // Manejar el redimensionamiento de la ventana
-        window.addEventListener("resize", () => {
-            if (window.innerWidth >= 560.01) {
                 links.classList.remove("expanded");
                 links.style.display = "none"; // Oculta el menú en pantallas grandes
+            } else {
+                links.classList.add("expanded");
+                links.style.display = "flex"; // Muestra el menú en pantallas pequeñas
             }
-        });
+        }
     });
+}
+
+// Ejecuta la función inicial solo si 'links' no es null
+if (links) {
+    if (links.classList.contains("expanded")) {
+        links.style.display = "flex"; // Muestra el menú en pantallas pequeñas
+    } else {
+        links.style.display = "none"; // Oculta el menú en pantallas grandes
+    }
+}
+
 </script>
 
   <style>

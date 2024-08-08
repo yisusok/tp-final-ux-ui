@@ -140,39 +140,46 @@
         <button class="next">&#10095;</button>
     </div>
 
-    <script>
-        let currentSlide = 0;
+<script>
+    // Obtener los botones y el slider
+const prevButton = document.querySelector('.prev') as HTMLButtonElement | null;
+const nextButton = document.querySelector('.next') as HTMLButtonElement | null;
+const slider = document.querySelector('.slider') as HTMLElement | null;
 
-        function showSlide(index) {
-            const slides = document.querySelectorAll('.slide');
-            const totalSlides = slides.length;
-            const slider = document.querySelector('.slider');
-
-            if (index >= totalSlides) {
-                currentSlide = 0;
-            } else if (index < 0) {
-                currentSlide = totalSlides - 1;
-            } else {
-                currentSlide = index;
-            }
-
-            const slideWidth = 100 / slides.length; 
-            const offset = -currentSlide * slideWidth;
-            slider.style.transform = `translateX(${offset}%)`;
+function showSlide(index: number) {
+    if (slider) {
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        // Ajusta el índice de la diapositiva actual
+        if (index >= totalSlides) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = totalSlides - 1;
+        } else {
+            currentSlide = index;
         }
 
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
+        // Mostrar 3 elementos por vez, ajusta el cálculo si es necesario
+        const slideWidth = 100 / slides.length;
+        const offset = -currentSlide * slideWidth;
+        slider.style.transform = `translateX(${offset}%)`;
+    }
+}
 
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
+// Añadir manejadores de eventos solo si los botones no son null
+if (prevButton) {
+    prevButton.addEventListener('click', () => showSlide(currentSlide - 1));
+}
 
-        document.querySelector('.next').addEventListener('click', nextSlide);
-        document.querySelector('.prev').addEventListener('click', prevSlide);
+if (nextButton) {
+    nextButton.addEventListener('click', () => showSlide(currentSlide + 1));
+}
 
-        showSlide(currentSlide);
-    </script>
+// Inicializar la primera diapositiva
+let currentSlide = 0;
+showSlide(currentSlide);
+
+</script>
 </body>
 </html>
